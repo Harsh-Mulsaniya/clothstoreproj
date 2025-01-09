@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item['ClassName'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="product-card">
+            <h1 class="product-title">{{ item['ClassName'] }}</h1>
+            <img class="product-image" src="{{ url_for('static', filename=class_images.get(item['ClassName'], 'default.jpg')) }}"
+                 alt="{{ item['ClassName'] }}">
+
+            <p class="product-description">
+                <strong>Description:</strong> {{ item['cloth_Description'] }}
+            </p>
+
+            <h2>Submit a Review</h2>
+            <form method="POST" class="review-form">
+                <input type="text" name="title" placeholder="Review Title" required>
+                <textarea name="description" placeholder="Review Description" required></textarea>
+                
+                <p><strong>Model Recommendation:</strong> 
+                    {{ 'Yes' if recommended == 1 else 'No' }}
+                </p>
+
+                <label>Override Recommendation:</label>
+                <input type="radio" name="override" value="1"> Yes
+                <input type="radio" name="override" value="0"> No
+
+                <button type="submit" class="submit-btn">Submit Review</button>
+            </form>
+
+            {% if review %}
+            <div class="review-section">
+                <h3>Your Review</h3>
+                <p><strong>Title:</strong> {{ review['Title'] }}</p>
+                <p><strong>Description:</strong> {{ review['Description'] }}</p>
+                <p><strong>Recommended:</strong> {{ 'Yes' if review['Recommended'] == '1' else 'No' }}</p>
+            </div>
+            {% endif %}
+
+            <a href="{{ url_for('search', keyword=item['ClassName']) }}" class="back-link">Back to Search Results</a>
+        </div>
+    </div>
+</body>
+
+</html>

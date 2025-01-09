@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASSIGNMENT 2 - Online Shopping</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1c1c1c;
+            color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #f0c674;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            width: 40%;
+            padding: 15px;
+            background-color: #f0c674;
+            color: #1c1c1c;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e1b058;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #f0c674;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #e1b058;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Online Store</h1>
+        <form action="{{ url_for('search') }}" method="POST">
+            <input type="text" name="keyword" placeholder="Search for clothing...">
+            <button type="submit">Search</button>
+        </form>
+        <div class="footer">
+            <p>© 2024 Online Shopping | <a href="#">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+</html>
